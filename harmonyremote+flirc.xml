@@ -1,0 +1,116 @@
+<keymap>
+
+<!--This uses a Logitech Harmony 665 remote on an LG C8 OLED TV with an Nvidia shield that has a flirc adaptor to read IR signals (number codes)-->
+	<!--An activity for the Nvidia shield is set up on MyHarmony-->
+		<!--Buttons are assigned under remote buttons and assigned to either LG TV or NVida shield-->
+<!--Use the Kodi Keymap Editor addon to identify the assigned IR signal code, be sure to discard changes so keymap not overwritten-->
+	<!--If no response is detected by kodi, plug flirc into computer and assign it to a keyboard key, then recheck on keymap editor (flirc in shield, facing remote)-->
+<!--IR Codes assigned by Harmony and Flirc (?? means unidentifable using keymap editor): 
+	LGTV: 	
+		Buttons that only interact with LGTV:
+			61637=FastForward, 61636=Rewind, ??=VolumeUp, ??=VolumeDown, ??=Mute
+		Buttons that only interact with Kodi:
+			61667=red(lgtv)=scrollup button on harmony remote
+			61669=yellow(lgtv)=scrolldown button on harmony remote)
+			61531=green(lgtv)=ir code overlapped with A shield button, unusuable
+	Shield: 
+		Buttons that interact with both Kodi and Shield:
+			61448=back(assigned to backarrow, exit, and guide buttons), 61568=up, 61570=left, 61571=right, 61569=down
+			61453=ok=play/pause, 61528=stop
+		Buttons that work only interact with Shield (ignored by Kodi): 
+			??=redsquare=powertoggle, ??=Home, ??=menu (Home and menu seem to function the same)
+
+			??=Leftbumper=plusdotbutton(opens shield settings menu)
+		Buttons that only interact with Kodi (Not assigned to do anything with Shield):
+			61531=yellowbutton=A(shield), 61524=bluebutton=B(shield), 61573=channeldown=mute(shield), 61572=channelup=language(shield), 61519=righttrigger=Ebutton
+			0=61488, 1=61489, 2=61490, 3=61491, 4=61492, 5=61492, 5=61493, 6=61594, 7=61495, 8=61496, 9=61497
+			61573=ChannelDown, 61572=ChannelUp
+			61519=righttrigger=Ebutton
+			61528=stopbotton=stop on video
+		Unassigned:
+			61529=greenbutton=Y(keyboard,flirc)
+			Lefttrigger, rightbumper (one of these gave same IR code as another button so unusuable)-->
+	<!--Keymap commands in global will work everywhere unless overwritten by a subgroup. 
+	Be sure to duplicate all fullscreenvideo keymaps to videoosd keymaps so that buttons work regardless if controls are on screen or not
+	Disable unwanted commands when in video with noop-->
+
+<global><keyboard>
+<!--scrollup--><key id="61667">RunScript(/storage/emulated/0/scripts/controls.py)</key> <!-- this script shows a text message with list of controls, edit if change -->
+<!--scrolldown--><key id="61669">noop</key>
+<!--red, opens screensaver app-->
+<!--green--><key id="61529">RunScript(/storage/emulated/0/scripts/refreshkodi.py)</key> <!--this script increases kodi volume and reloads the keymap-->
+<!--yellow--><key id="61531">scanitem</key> <!--haven't tested to see if this work-->
+<!--blue--><key id="61524">ToggleWatched</key>
+<!--ChannelDown--><key id="61573">PrevLetter</key>
+<!--ChannelUp--><key id="61572">NextLetter</key>
+<!--Number 1--><key id="61489">activatewindow(settings)</key>
+<!--Number 2--><key id="61490">activatewindow(favourites)</key>
+<!--Number 3--><key id="61491">RunScript(/storage/emulated/0/scripts/sortlastplayed.py)</key><!--SortByLastPlayed-->
+<!--Number 4--><key id="61492">RunScript(/storage/emulated/0/scripts/sortsorttitle.py)</key><!--SortBySortTitle-->
+<!--Number 5--><key id="61493">RunScript(/storage/emulated/0/scripts/sortyear.py)</key><!--SortByYear-->
+<!--Number 6--><key id="61494">RunScript(/storage/emulated/0/scripts/sortdateadded.py)</key><!--SortByDateAdded, list found here https://github.com/xbmc/xbmc/blob/75b31098a8800da653b373cd99a025b483029cfc/xbmc/utils/SortUtils.h#L49-L164 -->
+<!--Number 7--><key id="61495">updatelibrary(video)</key>
+<!--Number 8--><key id="61496">CleanLibrary(video)</key>
+<!--Number 9--><key id="61497">runaddon(script.trakt)</key>
+<!--dot plus, opens Shield settings-->
+<!--Number 0--><key id="61488">activatewindow(home)</key>
+<!--E button--><key id="61519">Info</key>
+</keyboard></global>
+
+<fullscreenvideo><keyboard>
+<!--scrollup--><key id="61667">RunScript(/storage/emulated/0/scripts/controls.py)</key> <!-- this script shows a text message with list of controls, edit if change -->
+<!--stopbutton--><key id="61528">Stop</key>
+<!--scrolldown--><key id="61669">noop</key>
+<!--SkipPrevious button--><key id="61484">SkipPrevious</key>
+<!--SkipNext button--><key id="61486">SkipNext</key>  
+<!--Number 1--><key id="61489">noop</key>
+<!--Number 2--><key id="61490">PlayerControl(SmallSkipBackward)</key>
+<!--Number 3--><key id="61491">PlayerControl(SmallSkipForward)</key>
+<!--Number 4--><key id="61492">audionextlanguage</key>
+<!--Number 5--><key id="61493">showsubtitles</key>
+<!--Number 6--><key id="61494">nextsubtitle</key>
+<!--Number 7--><key id="61495">activatewindow(osdaudiosettings)</key>
+<!--Number 8--><key id="61496">subtitledelay</key>
+<!--Number 9--><key id="61497">RunScript(/storage/emulated/0/scripts/subsearch.py)</key>
+<!--dot plus, open Shield settings -->
+<!--Number 0--><key id="61488">activatewindow(home)</key>      
+<!--E button--><key id="61519">CodecInfo</key>
+</keyboard></fullscreenvideo>
+
+<!--Having the media hotkeys duplicated below for videoosd and sliderdialog prevents global hotkeys from accidently being pressed while those menus are open-->
+<videoosd><keyboard>
+<!--SkipPrevious button--><key id="61484">SkipPrevious</key>
+<!--SkipNext button--><key id="61486">SkipNext</key>  
+<!--Number 1--><key id="61489">VolumeUp</key>
+<!--Number 2--><key id="61490">PlayerControl(SmallSkipBackward)</key>
+<!--Number 3--><key id="61491">PlayerControl(SmallSkipForward)</key> 
+<!--Number 4--><key id="61492">audionextlanguage</key>
+<!--Number 5--><key id="61493">showsubtitles</key>
+<!--Number 6--><key id="61494">nextsubtitle</key>
+<!--Number 7--><key id="61495">activatewindow(osdaudiosettings)</key>
+<!--Number 8--><key id="61496">subtitledelay</key>
+<!--Number 9--><key id="61497">activatewindow(subtitlesearch)</key>
+<!--dot plus, open Shield settings -->
+<!--Number 0--><key id="61488">activatewindow(home)</key>      
+<!--E button--><key id="61519">CodecInfo</key>
+</keyboard></videoosd>
+
+<sliderdialog><keyboard>
+<!--scrollup--><key id="61667">RunScript(/storage/emulated/0/scripts/controls.py)</key> <!-- this script shows a text message with list of controls, edit if change -->
+<!--scrolldown--><key id="61669">noop</key>
+<!--SkipPrevious button--><key id="61484">SkipPrevious</key>
+<!--SkipNext button--><key id="61486">SkipNext</key>  
+<!--Number 1--><key id="61489">VolumeUp</key>
+<!--Number 2--><key id="61490">PlayerControl(SmallSkipBackward)</key>
+<!--Number 3--><key id="61491">PlayerControl(SmallSkipForward)</key>
+<!--Number 4--><key id="61492">audionextlanguage</key>
+<!--Number 5--><key id="61493">showsubtitles</key>
+<!--Number 6--><key id="61494">nextsubtitle</key>
+<!--Number 7--><key id="61495">activatewindow(osdaudiosettings)</key>
+<!--Number 8--><key id="61496">subtitledelay</key>
+<!--Number 9--><key id="61497">RunScript(/storage/emulated/0/scripts/subsearch.py)</key>
+<!--dot plus, open Shield settings -->
+<!--Number 0--><key id="61488">activatewindow(home)</key>      
+<!--E button--><key id="61519">CodecInfo</key>
+</keyboard></sliderdialog>
+</keymap>
