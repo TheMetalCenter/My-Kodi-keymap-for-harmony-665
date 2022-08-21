@@ -39,7 +39,7 @@
 <!--scrolldown--><key id="61669">noop</key>
 <!--red, opens screensaver app-->
 <!--green--><key id="61529">RunScript(/storage/emulated/0/scripts/refreshkodi.py)</key> <!--this script increases kodi volume and reloads the keymap-->
-<!--yellow--><key id="61531">scanitem</key> <!--haven't tested to see if this work-->
+<!--yellow--><key id="61531">scanitem</key> 
 <!--blue--><key id="61524">ToggleWatched</key>
 <!--ChannelDown--><key id="61573">PrevLetter</key>
 <!--ChannelUp--><key id="61572">NextLetter</key>
@@ -61,8 +61,12 @@
 <!--scrollup--><key id="61667">RunScript(/storage/emulated/0/scripts/controls.py)</key> <!-- this script shows a text message with list of controls, edit if change -->
 <!--stopbutton--><key id="61528">Stop</key>
 <!--scrolldown--><key id="61669">noop</key>
+<!--yellow--><key id="61531">noop</key> 
+<!--blue--><key id="61524">noop</key>
 <!--SkipPrevious button--><key id="61484">SkipPrevious</key>
 <!--SkipNext button--><key id="61486">SkipNext</key>  
+<!--ChannelDown--><key id="61573">RunScript(/storage/emulated/0/scripts/verticalshiftup.py)</key>
+<!--ChannelUp--><key id="61572">RunScript(/storage/emulated/0/scripts/verticalshiftdown.py)</key>
 <!--Number 1--><key id="61489">noop</key>
 <!--Number 2--><key id="61490">PlayerControl(SmallSkipBackward)</key>
 <!--Number 3--><key id="61491">PlayerControl(SmallSkipForward)</key>
@@ -80,7 +84,11 @@
 <!--Having the media hotkeys duplicated below for videoosd and sliderdialog prevents global hotkeys from accidently being pressed while those menus are open-->
 <videoosd><keyboard>
 <!--SkipPrevious button--><key id="61484">SkipPrevious</key>
-<!--SkipNext button--><key id="61486">SkipNext</key>  
+<!--SkipNext button--><key id="61486">SkipNext</key> 
+<!--yellow--><key id="61531">noop</key> 
+<!--blue--><key id="61524">noop</key>
+<!--ChannelDown--><key id="61573">RunScript(/storage/emulated/0/scripts/verticalshiftup.py)</key>
+<!--ChannelUp--><key id="61572">RunScript(/storage/emulated/0/scripts/verticalshiftdown.py)</key> 
 <!--Number 1--><key id="61489">VolumeUp</key>
 <!--Number 2--><key id="61490">PlayerControl(SmallSkipBackward)</key>
 <!--Number 3--><key id="61491">PlayerControl(SmallSkipForward)</key> 
@@ -98,8 +106,12 @@
 <sliderdialog><keyboard>
 <!--scrollup--><key id="61667">RunScript(/storage/emulated/0/scripts/controls.py)</key> <!-- this script shows a text message with list of controls, edit if change -->
 <!--scrolldown--><key id="61669">noop</key>
+<!--yellow--><key id="61531">noop</key> 
+<!--blue--><key id="61524">noop</key>
 <!--SkipPrevious button--><key id="61484">SkipPrevious</key>
 <!--SkipNext button--><key id="61486">SkipNext</key>  
+<!--ChannelDown--><key id="61573">RunScript(/storage/emulated/0/scripts/verticalshiftup.py)</key>
+<!--ChannelUp--><key id="61572">RunScript(/storage/emulated/0/scripts/verticalshiftdown.py)</key>
 <!--Number 1--><key id="61489">VolumeUp</key>
 <!--Number 2--><key id="61490">PlayerControl(SmallSkipBackward)</key>
 <!--Number 3--><key id="61491">PlayerControl(SmallSkipForward)</key>
