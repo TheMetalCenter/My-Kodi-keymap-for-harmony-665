@@ -5,3 +5,9 @@ These scripts are used to customize buttons on a Harmony 665 remote with LG C8 T
 The .xml file is a keymap file, and should be placed in \internal\Android\data\org.xbmc.kodi\files\.kodi\userdata\keymaps
 
 The .py python scripts should be placed in their own folder, keymap is set to look for them in /storage/emulated/0/scripts/
+
+An activity for the Nvidia shield is set up on MyHarmony, buttons are assigned under remote buttons and assigned to either LG TV or NVida shield
+
+Keymap commands in global will work everywhere unless overwritten by a subgroup. Be sure to duplicate all fullscreenvideo keymaps to videoosd keymaps so that buttons work regardless if controls are on screen or not. 
+
+Disable unwanted commands when in video with noop
